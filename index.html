@@ -2,88 +2,201 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>GiftWell</title>
-    <!-- Bootstrap CDN for CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to GiftWell</title>
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-        }
-        .hero {
-            background-color: #f8f9fa;
-            padding: 100px 0;
-        }
-        .hero h1 {
-            color: #343a40;
-        }
-        .hero p {
-            color: #6c757d;
-        }
-        footer {
-            background-color: #343a40;
+        /* General styling */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('home_background.jpg');
+            background-size: cover;
+            background-position: center;
             color: white;
-            padding: 20px 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* Navigation bar with login/signup */
+        .navbar {
+            display: flex;
+            justify-content: flex-end;
+            width: 100%;
+            padding: 15px;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: bold;
+            background-color: #007bff;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .navbar a:hover {
+            background-color: #0056b3;
+        }
+
+        /* Hero section styling */
+        .hero {
+            text-align: center;
+            padding: 20px;
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin: 15px 0;
+            line-height: 1.5;
+        }
+
+        .cta-btn {
+            background-color: #ff9800;
+            color: white;
+            padding: 15px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            transition: background-color 0.3s;
+        }
+
+        .cta-btn:hover {
+            background-color: #e68900;
+        }
+
+        /* Language button and dropdown */
+        .language-container {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .language-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .language-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .language-dropdown {
+            display: none;
+            position: absolute;
+            bottom: 45px;
+            left: 0;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .language-dropdown button {
+            background: none;
+            border: none;
+            color: #333;
+            padding: 10px 20px;
+            text-align: left;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .language-dropdown button:hover {
+            background-color: #f1f1f1;
         }
     </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">GiftWell</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Explore Gifts</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section class="hero text-center">
-      <h1 class="display-4">Welcome to GiftWell!</h1>
-      <p class="lead">Discover the perfect gift for your loved ones around the world.</p>
-      <a href="#" class="btn btn-primary btn-lg">Start Exploring</a>
-    </section>
-
-    <!-- Language Dropdown -->
-    <div class="dropdown text-center my-5">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="languageDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Language
-      </button>
-      <div class="dropdown-menu" aria-labelledby="languageDropdown">
-        <a class="dropdown-item" href="#">English</a>
-        <a class="dropdown-item" href="#">French</a>
-        <a class="dropdown-item" href="#">Spanish</a>
-      </div>
+    <!-- Top Navigation with Login and Signup -->
+    <div class="navbar">
+        <a href="login.html" id="loginBtn">Login</a>
+        <a href="signup.html" id="signupBtn">Sign Up</a>
+        <a href="#" id="logoutBtn" style="display: none;" onclick="logout()">Logout</a>
     </div>
 
-    <!-- Footer -->
-    <footer class="text-center">
-      <p>&copy; 2024 GiftWell. All Rights Reserved.</p>
-    </footer>
+    <!-- Hero Section with Description -->
+    <div class="hero">
+        <h1>Welcome to GiftWell</h1>
+        <p>Discover the perfect gift for every occasion. GiftWell offers a curated selection of thoughtful gifts across categories, ensuring you find something special for everyone on your list.</p>
+        <p>Why choose GiftWell? With our intuitive platform, personalized recommendations, and extensive variety, you can shop with ease and confidence, knowing you'll find the right gift for every moment.</p>
+        <a href="explore.html" class="cta-btn">Start Exploring</a>
+    </div>
 
-    <!-- jQuery, Popper.js, and Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Language Selection Button and Dropdown -->
+    <div class="language-container">
+        <button class="language-btn" onclick="toggleDropdown()">Language</button>
+        <div id="languageDropdown" class="language-dropdown">
+            <button onclick="changeLanguage('en')">English</button>
+            <button onclick="changeLanguage('fr')">French</button>
+            <button onclick="changeLanguage('es')">Spanish</button>
+            <button onclick="changeLanguage('de')">German</button>
+        </div>
+    </div>
 
-    <!-- Script for Button and Dropdown functionality -->
     <script>
-        // Example: You can add functionality here for the Start Exploring button
-        document.querySelector('.btn-primary').addEventListener('click', function() {
-            alert('Start Exploring button clicked!');
+        // Check login status on page load
+        document.addEventListener("DOMContentLoaded", function() {
+            if (localStorage.getItem("isLoggedIn") === "true") {
+                document.getElementById("loginBtn").style.display = "none";
+                document.getElementById("signupBtn").style.display = "none";
+                document.getElementById("logoutBtn").style.display = "inline";
+            }
         });
+
+        // Logout function
+        function logout() {
+            localStorage.setItem("isLoggedIn", "false");
+            document.getElementById("loginBtn").style.display = "inline";
+            document.getElementById("signupBtn").style.display = "inline";
+            document.getElementById("logoutBtn").style.display = "none";
+            alert("You have been logged out.");
+        }
+
+        // Toggle the visibility of the language dropdown
+        function toggleDropdown() {
+            const dropdown = document.getElementById("languageDropdown");
+            dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+        }
+
+        // Function to change the language
+        function changeLanguage(language) {
+            alert(`Language changed to: ${language.toUpperCase()}`);
+            // Close the dropdown after selecting a language
+            toggleDropdown();
+
+            // Placeholder for actual language change functionality
+            // This could involve reloading page content or translating text
+        }
+
+        // Close dropdown if clicked outside
+        window.onclick = function(event) {
+            if (!event.target.matches('.language-btn')) {
+                const dropdown = document.getElementById("languageDropdown");
+                if (dropdown.style.display === "block") {
+                    dropdown.style.display = "none";
+                }
+            }
+        }
     </script>
+
 </body>
 </html>
